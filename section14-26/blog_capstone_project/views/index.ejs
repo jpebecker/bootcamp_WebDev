@@ -1,0 +1,29 @@
+<%- include('partials/header', { pageTitle: 'Home: A Ride Everyday' }) %>
+
+<div class="page-header">
+  <h1>Latest Posts</h1>
+  <a href="/posts/new" class="btn btn-primary">New Post</a>
+</div>
+
+<% if (posts.length === 0) { %>
+  <p class="empty-state">No posts yet. Create a post about any car.</p>
+<% } else { %>
+  <div class="post-grid">
+    <% posts.forEach(function(post) { %>
+      <article class="post-card">
+        <a href="/posts/<%= post.id %>" class="post-card-link">
+          <div class="post-card-image">
+            <img src="<%= post.imageUrl %>" alt="<%= post.carName || post.title %>">
+          </div>
+          <div class="post-card-body">
+            <span class="post-card-meta"><%= post.carName %><% if (post.carYear) { %> &middot; <%= post.carYear %><% } %></span>
+            <h2 class="post-card-title"><%= post.title %></h2>
+            <p class="post-card-excerpt"><%= post.content.substring(0, 110) %>&hellip;</p>
+          </div>
+        </a>
+      </article>
+    <% }); %>
+  </div>
+<% } %>
+
+<%- include('partials/footer') %>

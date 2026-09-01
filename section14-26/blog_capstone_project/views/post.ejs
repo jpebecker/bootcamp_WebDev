@@ -1,0 +1,28 @@
+<%- include('partials/header', { pageTitle: post.title + ': A Ride Everyday' }) %>
+
+<article class="post-full">
+  <a href="/" class="back-link">&larr; All posts</a>
+
+  <div class="post-full-image">
+    <img src="<%= post.imageUrl %>" alt="<%= post.carName || post.title %>">
+  </div>
+
+  <div class="post-full-header">
+    <span class="post-card-meta"><%= post.carName %><% if (post.carYear) { %> &middot; <%= post.carYear %><% } %></span>
+    <h1><%= post.title %></h1>
+    <p class="post-full-date">Posted on <%= post.createdAt.toDateString() %></p>
+  </div>
+
+  <div class="post-full-content">
+    <p><%= post.content %></p>
+  </div>
+
+  <div class="post-actions">
+    <a href="/posts/<%= post.id %>/edit" class="btn btn-secondary">Edit</a>
+    <form action="/posts/<%= post.id %>?_method=DELETE" method="POST" class="inline-form">
+      <button type="submit" class="btn btn-danger" onclick="return confirm('Delete this post?');">Delete</button>
+    </form>
+  </div>
+</article>
+
+<%- include('partials/footer') %>

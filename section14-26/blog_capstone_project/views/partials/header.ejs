@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= typeof pageTitle !== 'undefined' ? pageTitle : 'A Ride Everyday' %></title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="/" class="site-brand" aria-label="A Ride Everyday home">
+        <!--Header car symbol-->
+        <span class="site-mark" aria-hidden="true">
+          <svg viewBox="0 0 72 28" width="72" height="28" role="presentation" style="flex-shrink:0;">
+            <g fill="none" stroke="var(--text-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 19 L8 16 Q8 13 11 13 L26 13 L31 6 L47 6 L52 13 L62 13 Q66 13 66 16 L66 19 Z"></path>
+              <path d="M39 6 L39 13"></path>
+              <circle cx="20" cy="19" r="4"></circle>
+              <circle cx="56" cy="19" r="4"></circle>
+              <path d="M3 12h3.5M2.5 15.5h3M3.5 19h3"></path>
+            </g>
+          </svg>
+        </span>
+        <span class="site-brand-copy">
+          <span class="site-title">A Ride Everyday</span>
+          <span class="site-tagline">A post about a different car, every day</span>
+        </span>
+      </a>
+    </div>
+  </header>
+  <main class="container">
