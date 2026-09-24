@@ -1,0 +1,321 @@
+:root {
+  --color-bg: #12161b;
+  --color-panel: #1b2129;
+  --color-panel-raised: #232b34;
+  --color-ink: #e9edf1;
+  --color-steel: #6b7680;
+  --color-amber: #f5a623;
+  --color-amber-dark: #d98f15;
+  --color-redline: #e15241;
+  --color-border: #2c343d;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: 'IBM Plex Sans', Arial, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-ink);
+}
+
+a {
+  color: var(--color-amber);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-amber);
+  outline-offset: 2px;
+}
+
+/* Header: a thin amber strip stands in for a dashboard's warning-light
+   trim, used once here and nowhere else on the page. */
+.site-header {
+  background: var(--color-panel);
+  border-bottom: 2px solid var(--color-amber);
+  padding: 20px 16px;
+  text-align: center;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-ink);
+  text-decoration: none;
+  font-family: 'Rajdhani', 'IBM Plex Sans', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.brand-icon {
+  color: var(--color-amber);
+  flex-shrink: 0;
+}
+
+.tagline {
+  margin: 6px 0 0;
+  color: var(--color-steel);
+  font-size: 0.9rem;
+}
+
+.container {
+  max-width: 720px;
+  margin: 32px auto;
+  padding: 0 16px;
+}
+
+/* Form panel */
+.search-form {
+  background: var(--color-panel);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 8px 24px 24px;
+}
+
+.field {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.field:last-of-type {
+  border-bottom: none;
+}
+
+.field label {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--color-steel);
+  margin-bottom: 6px;
+}
+
+.field select {
+  width: 100%;
+  padding: 10px 36px 10px 12px;
+  font-size: 1rem;
+  font-family: 'IBM Plex Sans', sans-serif;
+  color: var(--color-ink);
+  background-color: var(--color-panel-raised);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath fill='%236b7680' d='M5 7l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 14px;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.field select:disabled {
+  opacity: 0.5;
+}
+
+.search-form button {
+  margin-top: 20px;
+  width: 100%;
+  padding: 14px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  color: var(--color-bg);
+  background: var(--color-amber);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.search-form button:hover:not(:disabled) {
+  background: var(--color-amber-dark);
+}
+
+.search-form button:disabled {
+  background: var(--color-steel);
+  color: var(--color-panel);
+  cursor: not-allowed;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 16px;
+  color: var(--color-amber);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.result-container {
+  max-width: 1000px;
+}
+
+/* Result page: photo and specs sit side by side on wider screens, like
+   a vehicle ID panel, and stack on mobile. */
+.result-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-panel);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+@media (min-width: 640px) {
+  .result-card {
+    flex-direction: row;
+  }
+
+  .result-image {
+    flex: 0 0 58%;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+}
+
+.result-image img {
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  object-fit: contain;
+  display: block;
+  background: var(--color-panel-raised);
+}
+
+.image-placeholder {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-panel-raised);
+  border: 1px dashed var(--color-border);
+  color: var(--color-steel);
+  text-align: center;
+  padding: 16px;
+}
+
+.attribution {
+  font-size: 0.75rem;
+  color: var(--color-steel);
+  padding: 10px 16px;
+  margin: 0;
+}
+
+.result-details {
+  padding: 24px;
+}
+
+.result-details h1 {
+  margin: 0 0 20px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+/* Price gauge: a tick strip above a large digit readout, echoing a
+   speedometer's linear scale rather than a generic stat card. */
+.price-gauge {
+  background: var(--color-panel-raised);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 16px 20px 20px;
+  margin-bottom: 20px;
+}
+
+.price-gauge::before {
+  content: '';
+  display: block;
+  height: 6px;
+  margin-bottom: 12px;
+  background-image: repeating-linear-gradient(
+    90deg,
+    var(--color-steel) 0,
+    var(--color-steel) 2px,
+    transparent 2px,
+    transparent 10px
+  );
+  opacity: 0.5;
+}
+
+.price-label {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--color-steel);
+  margin-bottom: 4px;
+}
+
+.price-value {
+  margin: 0;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-amber);
+  letter-spacing: 0.5px;
+}
+
+.details-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.details-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--color-border);
+}
+
+.details-list li:last-child {
+  border-bottom: none;
+}
+
+.detail-label {
+  color: var(--color-steel);
+}
+
+.detail-value {
+  color: var(--color-ink);
+  font-weight: 600;
+  text-align: right;
+}
+
+.alert {
+  padding: 16px 20px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  border-left: 3px solid var(--color-redline);
+  background: var(--color-panel);
+  color: var(--color-ink);
+}
+
+.alert-error {
+  border-left-color: var(--color-redline);
+}
+
+.alert h1 {
+  font-family: 'Rajdhani', sans-serif;
+  margin-top: 0;
+}
+
+.site-footer {
+  text-align: center;
+  padding: 24px 16px;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.8rem;
+  color: var(--color-steel);
+}
+
+.site-footer p {
+  margin: 4px 0;
+}

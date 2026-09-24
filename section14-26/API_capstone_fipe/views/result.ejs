@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<%- include('partials/head', { title: 'ConsulteCarrosAi — ' + vehicle.brand + ' ' + vehicle.model }) %>
+<body>
+  <%- include('partials/header') %>
+
+  <main class="container result-container">
+    <a href="/" class="back-link">&larr; Nova pesquisa</a>
+
+    <div class="result-card">
+      <div class="result-image">
+        <% if (image) { %>
+          <img src="<%= image.url || image.thumbnail %>" alt="<%= image.title %>" />
+          <p class="attribution">
+            Foto: <%= image.title %><% if (image.source) { %> &mdash; <a href="<%= image.sourceUrl %>" target="_blank" rel="noopener"><%= image.source %></a><% } %>
+          </p>
+        <% } else { %>
+          <div class="image-placeholder">Nenhuma imagem encontrada pra esse veículo</div>
+        <% } %>
+      </div>
+
+      <div class="result-details">
+        <h1><%= vehicle.brand %> <%= vehicle.model %></h1>
+
+        <div class="price-gauge">
+          <span class="price-label">Preço médio FIPE</span>
+          <p class="price-value"><%= vehicle.price %></p>
+        </div>
+
+        <ul class="details-list">
+          <li>
+            <span class="detail-label">Ano/modelo</span>
+            <span class="detail-value"><%= vehicle.modelYear %></span>
+          </li>
+          <li>
+            <span class="detail-label">Combustível</span>
+            <span class="detail-value"><%= vehicle.fuel %></span>
+          </li>
+          <li>
+            <span class="detail-label">Código FIPE</span>
+            <span class="detail-value"><%= vehicle.codeFipe %></span>
+          </li>
+          <li>
+            <span class="detail-label">Mês de referência</span>
+            <span class="detail-value"><%= vehicle.referenceMonth %></span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <%- include('partials/footer') %>
+</body>
+</html>

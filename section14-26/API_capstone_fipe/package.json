@@ -1,0 +1,19 @@
+{
+  "name": "consultecarrosai",
+  "version": "1.0.0",
+  "description": "Capstone project: looks up a car's price on the FIPE table and shows a matching image via SerpApi's Google Images engine",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "axios": "^1.7.7",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}

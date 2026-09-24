@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<%- include('partials/head', { title: 'ConsulteCarrosAi' }) %>
+<body>
+  <%- include('partials/header') %>
+
+  <main class="container">
+    <% if (error) { %>
+      <div class="alert alert-error"><%= error %></div>
+    <% } %>
+
+    <form id="search-form" class="search-form" action="/pesquisa" method="POST">
+      <div class="field">
+        <label for="brand-select">Marca</label>
+        <select id="brand-select" name="brandId" required>
+          <option value="" disabled selected>Selecione a marca</option>
+          <% brands.forEach(function(brand) { %>
+            <option value="<%= brand.code %>"><%= brand.name %></option>
+          <% }); %>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="model-select">Modelo</label>
+        <select id="model-select" name="modelId" required disabled>
+          <option value="" disabled selected>Escolha a marca primeiro</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="year-select">Ano</label>
+        <select id="year-select" name="yearId" required disabled>
+          <option value="" disabled selected>Escolha o modelo primeiro</option>
+        </select>
+      </div>
+
+      <button type="submit" id="submit-button" disabled>Consultar preço e imagem</button>
+    </form>
+  </main>
+
+  <%- include('partials/footer') %>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>
